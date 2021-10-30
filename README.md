@@ -1,2 +1,2 @@
 # RJ-Quiz-Helper
-Quiz practicing for Romans and James
+Welcome to the Quiz Helper! 
