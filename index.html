@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Urbanist:wght@100;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<div id='navigation-bar'>
+		<div id='new-quiz' class='nav-bar'>New Quiz</div>
+		<div id='help' class='nav-bar'>Help</div>
+	</div>
+
+	<div id='chapter-select'>
+		<div id='cs-ui'>
+			<div id='romans' class='chapter-s'>
+				<span id = 'cs-r-display'></span> <br><hr><br>
+    </div>
+    <div id = 'james' class = 'chapter-s'>
+      <span id = 'cs-j-display'></span> <br><hr><br>
+    </div>
+    </div>
+    <div id = 'cs-oc'>
+      <div id = 'cs-cancel' class = 'button-animation'>Cancel</div>
+      <div id = 'cs-ok' class = 'button-animation'>OK</div>
+    </div>
+  </div>
+  
+	<div id='citation'>
+		Scripture quotations taken from The Holy Bible, New International Version® NIV® Copyright © 1973 1978 1984 2011 by Biblica,
+		Inc. TM Used by permission. All rights reserved worldwide.
+	</div>
+
+	<div id='verse'>
+		<span id = 'reference'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span id = 'text'></span>
+    <br><br><hr><br>
+    <textarea id = 'answer' placeholder = 'Type here...'></textarea>
+    <div id = 'answer-submit' class = 'button-animation'>Submit</div><br><br>
+    <span id = 'answer-info'></span>
+    <div id = 'mic-button'>
+      <image id = 'mic-image' src = 'https://cdn.discordapp.com/attachments/882294002370629642/891051978636021770/microphone.png' width = 35>
+    </div>
+  </div>
+
+  <div id = 'blur'></div>
+  <div id = 'end'>
+    <div style = 'display: table-cell; vertical-align: middle;'>
+      <b><span id = 'percentage'>%</span></b><br><hr>
+      Total Questions: <span id = 'total-questions'></span><br>
+      Correct: <span id = 'correct'></span><br>
+      Incorrect: <span id = 'incorrect'></span><br><br>
+
+      <div id = 'end-new-quiz'>New Quiz</div>
+    </div>
+  </div>
+
+  <div id = 'webspeech-error'>
+    Uh oh! <br>
+    Your browser does not support speech recognition. Check <a href = 'https://caniuse.com/speech-recognition' target = '_blank'>here</a> for supported browsers.
+    <div id = 'ws-e-ok'>OK</div>
+  </div>
+    
+  <script src = 'verses.js'></script>
+  <script type = 'module' src="script.js"></script>
+</body>
+
+</html>
