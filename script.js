@@ -3,8 +3,8 @@ import { patienceDiff } from './patienceDiff.js';
 
 function countCharDiff(a, b) {
   let charDiffCount = 0;
-  for(let ci of patienceDiff(a, b).lines) { //ci = characterInfo
-    if(ci.aIndex === -1 || ci.bIndex === -1) charDiffCount++;
+  for (let ci of patienceDiff(a, b).lines) { //ci = characterInfo
+    if (ci.aIndex === -1 || ci.bIndex === -1) charDiffCount++;
   }
   return charDiffCount;
 }
@@ -88,32 +88,49 @@ class Session { //Represents a quiz practice session
     document.getElementById('answer').value = '';
     document.getElementById('verse').style.borderColor = '#000000';
     const b = Math.floor(Math.random() * this.range.length); //get random book
-    const c = Math.ceil(Math.random() * this.range[b][1]); //get random chapter #
+    if(!this.range[b][1]) return this.newQuestion(); //if book not selected, get new question
+    const cMax = this.range[b][2] ? this.range[b][2] : this.range[b][1]; //if no max chapter, set "r2" to "r1"
+    const c = Math.round(Math.random() * (this.range[b][1] - cMax)) + cMax; //get random chapter #
     const v = Math.ceil(Math.random() * Object.keys(verses.book[this.range[b][0]].chapter[c].verse).length);//get random verse #
     const question = { //Store info about question
       verse: new Verse(this.range[b][0], c, v),
       reference: `${["romans", "james"][b]} ${c}:${v}`,
       get questions() { return Verse.questionize(this.verse.content); }
     };
+    console.log(question)
     question.id = Math.ceil(Math.random() * question.questions.length);
+
     if (this.questionHistory.includes(`${question.reference} ${question.id}`)) { //If question has already been answered
-      let bookRange;
-      let totalVerses = 0;
-      for (let b in verses.book) { //Get number of verses answered
-        for (let c in verses.book[b].chapter) {
-          let book = b;
-          for (let r of this.range) {
-            if (r[0] === b) {
-              bookRange = r[1];
+
+      function getTotalVerses(r1, r2, book) { //Detect how many verses are in book range (this.range)
+        if (!verses.book.hasOwnProperty(book)) return console.log("Book not found: getRange()") //If book does not exist in verses
+        let totalVerses = 0;
+        for (let b in verses.book) { //iterate through books
+          if (b === book) {
+            for (let c in verses.book[b].chapter) { //iterate through chapters
+              const vCount = Object.keys(verses.book[b].chapter[c].verse).length; //how many verses are in chapter
+              if (r2 === 0 || r2 === r1) {
+                if (Number(c) === r1) totalVerses += vCount;
+              }
+              else {
+                if (c >= r1 && c <= r2) totalVerses += vCount;
+              }
             }
           }
-          if (Number(c) <= bookRange) {
-            totalVerses += Object.keys(verses.book[b].chapter[c].verse).length;
-          }
         }
+        return totalVerses;
+      }
+      const getRange = book => {
+        let res;
+        for (let r in this.range) {
+          let r1 = this.range[r][1];
+          let r2 = this.range[r][2];
+          if (book === this.range[r][0]) res = [r1, r2 === r1 ? 0 : r2];
+        }
+        return res;
       }
 
-      if (this.questionHistory.length >= totalVerses) { //End if there are no more verses
+      if (this.questionHistory.length >= getTotalVerses(getRange('romans')[0], getRange('romans')[1], 'romans') + getTotalVerses(getRange('james')[0], getRange('james')[1], 'james')) { //If all verses questioned, end
         this.end();
         return;
       }
@@ -193,7 +210,7 @@ class Session { //Represents a quiz practice session
 
         return res1 < res2 ? res1 : res2;
       };
-      
+
       if (answers.includes(userAnswer) || answers.includes(parsePunc(userAnswer)) || charDiff() < 8) { //Correct?
         document.getElementById('verse').style.borderColor = '#25B213';
         this.correct++;
@@ -207,7 +224,7 @@ class Session { //Represents a quiz practice session
     }
   }
 }
-let currentSession = new Session(["romans", 1, 1], ["james", 1, 3])
+let currentSession = new Session(["romans", 1, 0], ["james", 1, 3])
 currentSession.init();
 
 document.getElementById('mic-button').onclick = () => { if (currentSession.status === 'active') currentSession.mic(); } //Mic clicked
@@ -241,8 +258,8 @@ function newQuiz() {
     for (let i = 0; i < count; i++) { //create buttons
       const cElt = document.createElement('div');
       cElt.className = 'cs-button button-animation';
-      
-      cElt.id = i + 1;
+
+      cElt.id = 'csb' + (i + 1);
       cElt.innerText = i + 1;
 
       elt.appendChild(cElt);
@@ -250,21 +267,74 @@ function newQuiz() {
 
     document.getElementById('blur').style.display = 'block';
     document.getElementById('chapter-select').style.display = 'block';
-    document.getElementById('cs-r-display').innerHTML = 'Romans 1 - <b>?</b>';
-    document.getElementById('cs-j-display').innerHTML = 'James 1 - <b>?</b>';
+    document.getElementById('cs-r-display').innerHTML = 'Romans <b>?</b>';
+    document.getElementById('cs-j-display').innerHTML = 'James <b>?</b>';
   };
   addButtons('romans');
   addButtons('james');
 
   const csButtons = document.querySelectorAll('.cs-button');
 
+  function highlightButtons(book, start, end) {
+    //WIPPPPPPP
+  }
+
+  let se = 's'; //start or end? 's' = start, 'e' = end
+  let currentFocus = '';
+  let save = { 
+    'r': 0,
+    'j': 0
+  };
   csButtons.forEach(b => b.addEventListener("click", e => { //assign event listener (click) for every button
-    const elementID = e.target.id;
+    const elementID = Number(e.target.id.replace('csb', ''));
     const book = e.target.parentElement.id;
 
-    document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} ${elementID != 1 ? '1 -' : ''} <b>${elementID}</b>`;
-    if (book == 'romans') bookSelection['romans'] = elementID;
-    if (book == 'james') bookSelection['james'] = elementID;
+    if (se === 's') {
+
+      function setStart(book) {
+        const bn = book;
+        const ba = book == 'romans' ? 'r' : 'j';
+        currentFocus = ba;
+        bookSelection[bn] = [elementID, 0];
+        save[ba] = elementID;
+        highlightButtons(bn, elementID);
+      }
+
+      if (book == 'romans') {
+        if (currentFocus !== 'r') se = 's';
+        setStart('romans');
+      }
+      else if (book == 'james') {
+        if (currentFocus !== 'j') se = 's';
+        setStart('james');
+      }
+      document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${elementID}</b>`;
+      se = 'e';
+    }
+    else if (se === 'e') {
+      let bookSelect;
+
+      function setEnd(book) {
+        const bn = book;
+        const ba = book == 'romans' ? 'r' : 'j';
+        currentFocus = ba;
+        bookSelection[bn] = [Number(save[ba]), elementID];
+        highlightButtons(bn, Number(save[ba]), elementID)
+        bookSelect = ba;
+      }
+
+      if (book == 'romans') {
+        if (currentFocus !== 'r') se = 's';
+        setEnd('romans');
+      }
+      else if (book == 'james') {
+        if (currentFocus !== 'j') se = 's';
+        setEnd('james');
+      }
+      
+      document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${save[bookSelect]}</b> - <b>${elementID}</b>`;
+      se = 's';
+    }
   }));
 
   //Cancel button
@@ -287,12 +357,16 @@ document.getElementById('end-new-quiz').onclick = e => {
 document.getElementById('cs-ok').onclick = () => {
   if (!bookSelection['romans'] && !bookSelection['james']) return document.getElementById('cs-ok').style.boxShadow = '0px 0px 5px #ff0000';
 
+  for (let bS in bookSelection) {
+    if (!bookSelection[bS]) bookSelection[bS] = [0, 0];
+  }
+
   document.getElementById('cs-ok').style.removeProperty('box-shadow');
   document.getElementById('chapter-select').style.display = 'none';
   document.getElementById('blur').style.display = 'none';
 
-  if (bookSelection['romans'] && bookSelection['james']) currentSession = new Session(['romans', bookSelection['romans']], ['james', bookSelection['james']]); //done
-  else if (bookSelection['romans']) currentSession = new Session(['romans', bookSelection['romans']]);
-  else if (bookSelection['james']) currentSession = new Session(['james', bookSelection['james']])
+  if (bookSelection['romans'] && bookSelection['james']) currentSession = new Session(['romans', bookSelection['romans'][0], bookSelection['romans'][1]], ['james', bookSelection['james'][0], bookSelection['james'][1]]); //done
+  else if (bookSelection['romans']) currentSession = new Session(['romans', bookSelection['romans'][0], bookSelection['romans'][0]]);
+  else if (bookSelection['james']) currentSession = new Session(['james', bookSelection['james'][0], bookSelection['james'][0]]);
   currentSession.init();
 }
