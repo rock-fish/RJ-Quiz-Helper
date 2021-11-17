@@ -88,7 +88,7 @@ class Session { //Represents a quiz practice session
     document.getElementById('answer').value = '';
     document.getElementById('verse').style.borderColor = '#000000';
     const b = Math.floor(Math.random() * this.range.length); //get random book
-    if(!this.range[b][1]) return this.newQuestion(); //if book not selected, get new question
+    if (!this.range[b][1]) return this.newQuestion(); //if book not selected, get new question
     const cMax = this.range[b][2] ? this.range[b][2] : this.range[b][1]; //if no max chapter, set "r2" to "r1"
     const c = Math.round(Math.random() * (this.range[b][1] - cMax)) + cMax; //get random chapter #
     const v = Math.ceil(Math.random() * Object.keys(verses.book[this.range[b][0]].chapter[c].verse).length);//get random verse #
@@ -97,7 +97,6 @@ class Session { //Represents a quiz practice session
       reference: `${["romans", "james"][b]} ${c}:${v}`,
       get questions() { return Verse.questionize(this.verse.content); }
     };
-    console.log(question)
     question.id = Math.ceil(Math.random() * question.questions.length);
 
     if (this.questionHistory.includes(`${question.reference} ${question.id}`)) { //If question has already been answered
@@ -276,64 +275,114 @@ function newQuiz() {
   const csButtons = document.querySelectorAll('.cs-button');
 
   function highlightButtons(book, start, end) {
-    //WIPPPPPPP
+    const b = book;
+    const pEl = document.getElementById(b);
+
+    if (!pEl) return console.log('highlightButtons: book not found: ' + b);
+
+    const buttons = pEl.querySelectorAll('.cs-button');
+
+    let rEnd;
+    if (!end) rEnd = start;
+    else rEnd = end;
+
+    buttons.forEach(b => {
+      const id = Number(b.id.replace('csb', ''));
+      if (id == start || id == rEnd) {
+        b.style.boxShadow = '0px 0px 5px #000000';
+      }
+      else if (id >= start && id <= rEnd) {
+        b.style.color = '#747474';
+      }
+    });
+  }
+  function resetButtons(book) {
+    const pEl = document.getElementById(book);
+
+    if(!pEl) return console.log('resetButtons: book not found: ' + b);
+
+    const buttons = pEl.querySelectorAll('.cs-button');
+    buttons.forEach(b => {
+      b.style.boxShadow = '';
+      b.style.color = '#000000';
+    });
   }
 
   let se = 's'; //start or end? 's' = start, 'e' = end
   let currentFocus = '';
-  let save = { 
+  let save = {
     'r': 0,
     'j': 0
   };
-  csButtons.forEach(b => b.addEventListener("click", e => { //assign event listener (click) for every button
-    const elementID = Number(e.target.id.replace('csb', ''));
-    const book = e.target.parentElement.id;
+
+  function setStart(book) {
+    const bn = book;
+    const ba = book == 'romans' ? 'r' : 'j';
+    resetButtons(bn);
+    currentFocus = ba;
+    bookSelection[bn] = [elementID, 0];
+    save[ba] = elementID;
+    highlightButtons(bn, elementID);
+    se = 'e';
+  }
+  function setEnd(book) {
+    const bn = book;
+    const ba = book == 'romans' ? 'r' : 'j';
+    currentFocus = ba;
+    bookSelection[bn] = [Number(save[ba]), elementID];
+    highlightButtons(bn, Number(save[ba]), elementID);
+    se = 's';
+  }
+
+  let elementID; //to make it global
+
+  csButtons.forEach(b => b.addEventListener("click", e => { //assign event listener (click) for every button, create function when clicked
+    elementID = Number(e.target.id.replace('csb', '')); //get id of button clicked
+    const book = e.target.parentElement.id; //get book of item clicked
+    const bookAbv = e.target.parentElement.id == 'romans' ? 'r' : 'j'; //book abv
 
     if (se === 's') {
-
-      function setStart(book) {
-        const bn = book;
-        const ba = book == 'romans' ? 'r' : 'j';
-        currentFocus = ba;
-        bookSelection[bn] = [elementID, 0];
-        save[ba] = elementID;
-        highlightButtons(bn, elementID);
-      }
-
       if (book == 'romans') {
-        if (currentFocus !== 'r') se = 's';
         setStart('romans');
       }
       else if (book == 'james') {
-        if (currentFocus !== 'j') se = 's';
         setStart('james');
       }
       document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${elementID}</b>`;
-      se = 'e';
     }
     else if (se === 'e') {
       let bookSelect;
 
-      function setEnd(book) {
-        const bn = book;
-        const ba = book == 'romans' ? 'r' : 'j';
-        currentFocus = ba;
-        bookSelection[bn] = [Number(save[ba]), elementID];
-        highlightButtons(bn, Number(save[ba]), elementID)
-        bookSelect = ba;
-      }
-
       if (book == 'romans') {
-        if (currentFocus !== 'r') se = 's';
-        setEnd('romans');
+        if (currentFocus !== 'r') {
+          setStart('romans');
+        }
+        else {
+          setEnd('romans');
+        }
       }
       else if (book == 'james') {
-        if (currentFocus !== 'j') se = 's';
-        setEnd('james');
+        if (currentFocus !== 'j') { 
+          setStart('james');
+        }
+        else {
+          setEnd('james');
+        }
       }
-      
-      document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${save[bookSelect]}</b> - <b>${elementID}</b>`;
-      se = 's';
+
+      if (elementID < save[currentFocus]) {
+        let s = save[currentFocus];
+        save[currentFocus] = elementID;
+        elementID = s;
+        document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${save[currentFocus]}</b> - <b>${elementID}</b>`;
+      }
+      else if (elementID == save[currentFocus]) {
+        document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${elementID}</b>`;
+        elementID = 0;
+      }
+      else {
+        document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${save[currentFocus]}</b> - <b>${elementID}</b>`;
+      }
     }
   }));
 
