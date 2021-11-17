@@ -5,3 +5,5 @@ This project is currently a work in progress! Features may not work and things m
 
 # Important Information
 Every question is in **finish the verse** format. This means that you have to submit everything that goes after the question ends, or you could just answer with the whole verse. There is also an 8 character leniency, meaning you can get a maximum of 8 **characters** incorrect. 
+
+Clicking the mic button will allow you to speak your answer into the computer. If you are using this for the first time, make sure to press "OK" to allowing the site to access your microphone. Only some browsers support web speech recognition! If the text area's border becomes red, your computer is recording what you say. There may be a delay before it enters what you say into the text box. Make sure to speak clearly and exaggerate your syllables to make your answer more accurate. Before submitting, check over what is in the answer box.
