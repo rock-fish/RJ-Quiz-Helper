@@ -288,11 +288,15 @@ function newQuiz() {
 
     buttons.forEach(b => {
       const id = Number(b.id.replace('csb', ''));
+      b.style.color = '#000000';
       if (id == start || id == rEnd) {
         b.style.boxShadow = '0px 0px 5px #000000';
       }
       else if (id >= start && id <= rEnd) {
-        b.style.color = '#747474';
+        b.style.boxShadow = '0px 0px 3px #505050';
+      }
+      else {
+        b.style.color = '#808080';
       }
     });
   }
