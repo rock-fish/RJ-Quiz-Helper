@@ -129,6 +129,8 @@ class Session { //Represents a quiz practice session
         return res;
       }
 
+      console.log(question.reference);
+
       if (this.questionHistory.length >= getTotalVerses(getRange('romans')[0], getRange('romans')[1], 'romans') + getTotalVerses(getRange('james')[0], getRange('james')[1], 'james')) { //If all verses questioned, end
         this.end();
         return;
@@ -282,17 +284,12 @@ function newQuiz() {
 
     const buttons = pEl.querySelectorAll('.cs-button');
 
-    let rEnd;
-    if (!end) rEnd = start;
-    else rEnd = end;
-
     buttons.forEach(b => {
       const id = Number(b.id.replace('csb', ''));
-      b.style.color = '#000000';
-      if (id == start || id == rEnd) {
+      if (id == start || id == end) {
         b.style.boxShadow = '0px 0px 5px #000000';
       }
-      else if (id >= start && id <= rEnd) {
+      else if (id >= start && id <= end) {
         b.style.boxShadow = '0px 0px 3px #505050';
       }
       else {
@@ -326,7 +323,6 @@ function newQuiz() {
     currentFocus = ba;
     bookSelection[bn] = [elementID, 0];
     save[ba] = elementID;
-    highlightButtons(bn, elementID);
     se = 'e';
   }
   function setEnd(book) {
@@ -334,13 +330,13 @@ function newQuiz() {
     const ba = book == 'romans' ? 'r' : 'j';
     currentFocus = ba;
     bookSelection[bn] = [Number(save[ba]), elementID];
-    highlightButtons(bn, Number(save[ba]), elementID);
     se = 's';
   }
 
   let elementID; //to make it global
 
   csButtons.forEach(b => b.addEventListener("click", e => { //assign event listener (click) for every button, create function when clicked
+
     elementID = Number(e.target.id.replace('csb', '')); //get id of button clicked
     const book = e.target.parentElement.id; //get book of item clicked
     const bookAbv = e.target.parentElement.id == 'romans' ? 'r' : 'j'; //book abv
@@ -379,13 +375,16 @@ function newQuiz() {
         save[currentFocus] = elementID;
         elementID = s;
         document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${save[currentFocus]}</b> - <b>${elementID}</b>`;
+        highlightButtons(book, Number(save[currentFocus]), elementID);
       }
       else if (elementID == save[currentFocus]) {
         document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${elementID}</b>`;
         elementID = 0;
+        highlightButtons(book, elementID);
       }
       else {
         document.getElementById(`cs-${book.charAt(0)}-display`).innerHTML = `${book == 'romans' ? 'Romans' : "James"} <b>${save[currentFocus]}</b> - <b>${elementID}</b>`;
+        highlightButtons(book, Number(save[currentFocus]), elementID);
       }
     }
   }));
