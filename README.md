@@ -13,6 +13,6 @@ Clicking the mic button will allow you to speak your answer into the computer. I
 
 To create a new session, click "New Quiz." A popup will appear, asking you which chapters you want to review. To select a range of chapters from either Romans or James, click the starting chapter first, then click the end chapter of the range you want to review. It is possible to only select one chapter by not selecting an end chapter. After you are done, click "OK."
 
-!(https://cdn.discordapp.com/attachments/882294002370629642/911382567813546044/unknown.png)[example]
+![https://cdn.discordapp.com/attachments/882294002370629642/911382567813546044/unknown.png](example)
 
 This site currently does not work on smaller screens or mobile.
