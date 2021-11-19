@@ -3,6 +3,9 @@ Welcome to the Quiz Helper! This is a place where you can practice quizzing and 
 
 This project is currently a work in progress! Features may not work and things may look wonky.
 
+# About Bible Quizzing
+Bible Quizzing is a place where you can competitively memorize the Bible. At practices, participants are asked questions about what they have memorized. You can see the official Bible Quizzing website here: http://www.cmabiblequizzing.org/ 
+
 # Important Information
 Every question is in **finish the verse** format. This means that you have to submit everything that goes after the question ends, or you could just answer with the whole verse. There is also an 8 character leniency, meaning you can get a maximum of 8 **characters** incorrect. 
 
