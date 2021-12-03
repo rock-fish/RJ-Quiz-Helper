@@ -1,4 +1,4 @@
-//Replace ’ '      “” \"    — -
+//Replace ’ '      “ ” \"    — -
 // 1= beginning of question          1| end of question
 export const verses = {
   book: {
@@ -38,6 +38,39 @@ export const verses = {
             "30": "slanderers, God-haters, insolent, arrogant and boastful; 1=they invent ways of 1|doing evil; they disobey their parents;",
             "31": "1=they have no 1|understanding, no fidelity, no love, no mercy.",
             "32": "1=Although they know God's righteous decree that 1|those who do such things deserve death, 2=they not only continue to do 2|these very things 3=but also approve 3|of those who practice them."
+          }
+        },
+        "2": { //WIP
+          verse: {
+            "1": "1=You, therefore, 1|have no excuse, 2=you who pass 2|judgment on someone else, for 3=at whatever point you 3|judge another, you are condemning yourself, because 4=you who pass judgment do 4|the same things.",
+            "2": "1=Now we know that 1|God's judgment against those who do such things is based on truth.",
+            "3": "1=So when you, 1|a mere human being, 2=pass judgment on them and 2|yet do the same things, 3=do you think you will 3|escape God's judgment?",
+            "4": "Or 1=do you show contempt for 1|the riches of his kindness, forbearance and patience, 2=not realizing that 2|God's kindness is intended to lead you to repentance?",
+            "5": "1=But because of 1|your stubbornness and your unrepentant heart, 2=you are storing up wrath against 2|yourself for the day of God's wrath, when his righteous judgment will be revealed.",
+            "6": "1=God \"will 1|repay each person according to what they have done.\"",
+            "7": "1=To those who by 1|persistence in doing good seek glory, honor and immortality, he will give eternal life.",
+            "8": "But 1=for those who are 1|self-seeking and 2=who reject the 2|truth and follow evil, there will be wrath and anger.",
+            "9": "1=There will be trouble 1|and distress for every human being who does evil: first for the Jew, then for the Gentile;",
+            "10": "but 1=glory, honor and 1|peace for everyone who does good: first for the Jew, then for the Gentile.",
+            "11": "For 1=God does not 1|show favoritism.",
+            "12": "1=All who sin apart 1|from the law will also perish apart from the law, and 2=all who sin under 2|the law will be judged by the law.",
+            "13": "For 1=it is not those who 1|hear the law who are righteous in God's sight, but 2=it is those who 2|obey the law who will be declared righteous.",
+            "14": "(Indeed, 1=when Gentiles, who 1|do not have the law, 2=do by nature 2|things required by the law, 3=they are a law for 3|themselves, even though 4=they do not have 4|the law.",
+            "15": "1=They show that the requirements of 1|the law are written on their hearts, 2=their consciences 2|also bearing witness, and 3=their thoughts sometimes 3|accusing them and at other times even defending them.)",
+            "16": "1=This will take place on 1|the day when 2=God judges people's 2|secrets through Jesus Christ, as my gospel declares.",
+            "17": "Now you, 1=if you call yourself 1|a Jew; 2=if you rely on 2|the law and boast in God;",
+            "18": "1=if you know his 1|will 2=and approve of what 2|is superior because you are instructed by the law;",
+            "19": "1=if you are convinced that 1|you are a guide for the blind, 2=a light for 2|those who are in the dark,",
+            "20": "1=an instructor of 1|the foolish, 2=a teacher of 2|little children, because 3=you have in the law the 3|embodiment of knowledge and truth-",
+            "21": "1=you, then, who 1|teach others, do you not teach yourself? 2=You who preach against 2|stealing, do you steal?",
+            "22": "1=You who say that people should not 1|commit adultery, do you commit adultery? 2=You who abhor 2|idols, do you rob temples?",
+            "23": "1=You who boast in 1|the law, do you dishonor God by breaking the law?",
+            "24": "1=As it is written: 1|\"God's name is blasphemed among the Gentiles because of you.\"",
+            "25": "1=Circumcision has value if you 1|observe the law, but 2=if you break the law, 2|you have become as though you had not been circumcised.",
+            "26": "So then, 1=if those who are not circumcised 1|keep the law's requirements, 2=will they not be regarded as though 2|they were circumcised?",
+            "27": "1=The one who is not circumcised 1|physically and 2=yet obeys the law will 2|condemn you who, 3=even though you have 3|the written code and circumcision, are a lawbreaker.",
+            "28": "1=A person is not a Jew who is 1|one only outwardly, 2=nor is circumcision merely 2|outward and physical.",
+            "29": "No, 1=a person is a Jew who is one 1|inwardly; and 2=circumcision is circumcision of 2|the heart, by the Spirit, not by the written code. 3=Such a person's 3|praise is not from other people, but from God."
           }
         }
       }
