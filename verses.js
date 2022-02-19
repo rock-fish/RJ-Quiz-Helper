@@ -107,6 +107,35 @@ export const verses = {
             "30": "1=since there is 1|only one God, 2=who will justify 2|the circumcised by faith and the uncircumcised through that same faith.",
             "31": "1=Do we, then, 1|nullify the law by this faith? Not at all! 2=Rather, we 2|uphold the law."
           }
+        },
+        "4": {
+          verse: {
+            "1": "1=What then 1|2=shall we 2|say that 3=Abraham, our 3|forefather 4=according to 4|the flesh, 5=discovered in 5|this matter?",
+            "2:": "1=If, 1|in fact, 2=Abraham was 2|justified by works, 3=he had something to 3|boast about-4=but not 4|before God.",
+            "3": "1=What does 1|Scripture say? \"Abraham believed God, and it was credited to him as righteousness.\"",
+            "4": "1=Now to 1|the one who works, 2=wages are not 2|credited as a gift 3=but as 3|an obligation.",
+            "5": "1=However, 1|2=to the one who 2|does not work 3=but trusts 3|God who justifies the ungodly, 4=their faith is 4|credited as righteousness.",
+            "6": "1=David says 1|the same thing when 2=he speaks of 2|the blessedness of the one to whom God credits righteousness apart from works:",
+            "7": "1=\"Blessed are 1|those whose transgressions are forgiven, whose sins are covered.",
+            "8": "1=Blessed is 1|the one whose sin the Lord will never count against them.\"",
+            "9": "1=Is this blessedness 1|only for the circumcised, 2=or also for 2|the uncircumcised? 3=We have been saying that 3|Abraham's faith was credited to him as righteousness.",
+            "10": "1=Under what 1|circumstances was it credited? 2=Was it after he was 2|circumcised, or before? 3=It was not 3|after, but before!",
+            "11": "1=And he received 1|circumcision as a sign, 2=a seal of 2|the righteousness that 3=he had by 3|faith while he was still uncircumcised. 4=So then, 4|he is the father of all who believe but have not been circumcised, 5=in order that 5|righteousness might be credited to them.",
+            "12": "1=And he is then also 1|the father of the circumcised who not only are circumcised 2=but who also 2|follow in the footsteps of the faith that 3=our father 3|Abraham had before he was circumcised.",
+            "13": "1=It was not through 1|the law that Abraham and his offspring received the promise that he would be heir of the world, 2=but through 2|the righteousness that comes by faith.",
+            "14": "1=For if those who 1|depend on the law are heirs, 2=faith means 2|nothing and the promise is worthless,",
+            "15": "1=because 1|the law brings wrath. 2=And where 2|there is no law there is no transgression.",
+            "16": "1=Therefore, 1|the promise comes by faith, 2=so that it 2|may be by grace 3=and may be 3|guaranteed to all Abraham's offspring-4=not only to 4|those who are of the law but 5=also to those who 5|have the faith of Abraham. 6=He is 6|the father of us all.",
+            "17": "1=As it is written: 1|\"I have made you a father of many nations.\" He is our father in the sight of God, in whom he believed-the God who gives life to the dead and calls into being things that were not.",
+            "18": "1=Against all hope, 1|Abraham in hope believed and so became the father of many nations, 2=just as 2|it had been said to him, \"So shall your offspring be.\"",
+            "19": "1=Without 1|weakening in his faith, he faced the fact that his body was as good as dead-2=since he was 2|about a hundred years old-3=and that 3|Sarah's womb was also dead.",
+            "20": "1=Yet he did 1|not waver through unbelief regarding the promise of God, 2=but was 2|strengthened in his faith and gave glory to God,",
+            "21": "1=being 1|fully persuaded that 2=God had 2|power to do what he had promised.",
+            "22": "1=This is why 1|\"it was credited to him as righteousness.\"",
+            "23": "1=The words 1|\"it was credited to him\" were written not for him alone,",
+            "24": "1=but also for 1|us, 2=to whom 2|God will credit righteousness-for us who believe in him who raised Jesus our Lord from the dead.",
+            "25": "1=He was 1|delivered over to death for our sins and was raised to life for our justification."
+          }
         }
       }
     },
