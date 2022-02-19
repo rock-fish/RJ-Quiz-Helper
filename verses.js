@@ -40,7 +40,7 @@ export const verses = {
             "32": "1=Although they know God's righteous decree that 1|those who do such things deserve death, 2=they not only continue to do 2|these very things 3=but also approve 3|of those who practice them."
           }
         },
-        "2": { //WIP
+        "2": { 
           verse: {
             "1": "1=You, therefore, 1|have no excuse, 2=you who pass 2|judgment on someone else, for 3=at whatever point you 3|judge another, you are condemning yourself, because 4=you who pass judgment do 4|the same things.",
             "2": "1=Now we know that 1|God's judgment against those who do such things is based on truth.",
@@ -71,6 +71,41 @@ export const verses = {
             "27": "1=The one who is not circumcised 1|physically and 2=yet obeys the law will 2|condemn you who, 3=even though you have 3|the written code and circumcision, are a lawbreaker.",
             "28": "1=A person is not a Jew who is 1|one only outwardly, 2=nor is circumcision merely 2|outward and physical.",
             "29": "No, 1=a person is a Jew who is one 1|inwardly; and 2=circumcision is circumcision of 2|the heart, by the Spirit, not by the written code. 3=Such a person's 3|praise is not from other people, but from God."
+          }
+        },
+        "3": {
+          verse: {
+            "1": "1=What advantage, then, 1|is there in being a Jew, or 2=what value is there 2|in circumcision?",
+            "2": "Much in every way! 1=First of all, 1|the Jews have been entrusted with the very words of God.",
+            "3": "1=What if some were 1|unfaithful? 2=Will their unfaithfulness 2|nullify God's faithfulness?",
+            "4": "Not at all! 1=Let God be 1|true, and 2=every human being a 2|liar. 3=As it is written: 3|\"So that you may be proved right when you speak and prevail when you judge.\"",
+            "5": "But 1=if our unrighteousness 1|2=brings out God's 2|righteousness more clearly, what shall we say? That 3=God is unjust in 3|bringing his wrath on us? (4=I am using 4|a human argument.)",
+            "6": "Certainly not! 1=If that were so, 1|how could God judge the world?",
+            "7": "1=Someone might argue, 1|2=\"If my falsehood 2|enhances God's truthfulness 3=and so increases 3|his glory, 4=why am I still 4|condemned as a sinner?\"",
+            "8": "1=Why not say-1|as some slanderously claim that we say-\"2=Let us do 2|evil that good may result\"? Their condemnation is just!",
+            "9": "1=What shall we 1|conclude then? 2=Do we have 2|any advantage? Not at all! 4=For we have already made 4|the charge that Jews and Gentiles alike are all under the power of sin.",
+            "10": "1=As it is written: 1|\"There is no one righteous, not even one;",
+            "11": "1=there is no one who 1|understands; there is no one who seeks God.",
+            "12": "1=All have 1|turned away, 2=they have together 2|become worthless; there is no one who does good, not even one.\"",
+            "13": "1=\"Their throats are 1|open graves; their tongues practice deceit.\" 2=\"The poison 2|of vipers is on their lips.\"",
+            "14": "1=Their mouths 1|are full of cursing and bitterness.\"",
+            "15": "1=\"Their feet 1|are swift to shed blood;",
+            "16": "1=ruin and 1|misery mark their ways,",
+            "17": "and 1=the way of 1|peace they do not know.\"",
+            "18": "1=\"There is no 1|fear of God before their eyes.\"",
+            "19": "1=Now we know that 1|whatever the law says, 2=it says to those 2|who are under the law, 3=so that every 3|mouth may be silenced and the whole world held accountable to God.",
+            "20": "1=Therefore no one will 1|be declared righteous in God's sight by the works of the law; 2=rather, through 2|the law we become conscious of our sin.",
+            "21": "But 1=now apart from 1|the law the righteousness of God has been made known, 2=to which the Law 2|and the Prophets testify.",
+            "22": "1=This righteousness is given 1|through faith in Jesus Christ to all who believe. 2=There is no 2|difference between Jew and Gentile,",
+            "23": "1=for all have 1|sinned and fall short of the glory of God,",
+            "24": "1=and all are 1|justified freely by his grace through the redemption that came by Christ Jesus.",
+            "25": "1=God presented Christ as 1|a sacrifice of atonement, 2=through the shedding of 2|his blood-to be received by faith. 3=He did this to 3|demonstrate his righteousness, because 4=in his forbearance he 4|had left the sins committed beforehand unpunished-",
+            "26": "1=he did it to 1|demonstrate his righteousness at the present time, 2=so as to be 2|just and the one who justifies those who have faith in Jesus.",
+            "27": "1=Where, then, is boasting? 1|It is excluded. 2=Because of what law? 2|The law that requires works? No, because of the law that requires faith.",
+            "28": "For 1=we maintain that 1|a person is justified by faith apart from the works of the law.",
+            "29": "Or 1=is God the God 1|of Jews only? 2=Is he not the 2|God of Gentiles too? Yes, of Gentiles too,",
+            "30": "1=since there is 1|only one God, 2=who will justify 2|the circumcised by faith and the uncircumcised through that same faith.",
+            "31": "1=Do we, then, 1|nullify the law by this faith? Not at all! 2=Rather, we 2|uphold the law."
           }
         }
       }
